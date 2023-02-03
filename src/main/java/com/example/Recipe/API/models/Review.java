@@ -17,12 +17,12 @@ public class Review {
     @GeneratedValue
     private Long id;
 
-    @NotNull
+
     private String username;
 
     private Integer rating;
 
-    @NotNull
+
     private String description;
 
     public void setRating(int rating) {

@@ -39,7 +39,6 @@ public class RecipeController {
         }
     }
 
-
     @GetMapping
     public ResponseEntity<?> getAllRecipes() {
         try {

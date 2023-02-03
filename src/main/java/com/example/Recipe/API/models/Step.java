@@ -17,9 +17,9 @@ public class Step {
     @GeneratedValue
     private long id;
 
-    @NotNull
+
     private int stepNumber;
 
-    @NotNull
+
     private String description;
 }

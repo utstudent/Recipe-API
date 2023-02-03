@@ -17,13 +17,14 @@ public class Ingredient {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
-    @NotNull
+
     private String name;
 
-    @NotNull
+
     private String amount;
 
     private String state;
+
 }
