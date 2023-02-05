@@ -69,7 +69,7 @@ public class Recipe {
         }
     }
 
-    @PostLoad
+    //@PostLoad
     public void generateLocationURI() {
         try {
             locationURI = new URI(
