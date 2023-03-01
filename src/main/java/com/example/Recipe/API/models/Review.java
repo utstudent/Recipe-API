@@ -1,8 +1,9 @@
 package com.example.Recipe.API.models;
+import com.example.Recipe.API.models.SecurityModels.CustomUserDetails;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -17,8 +18,10 @@ public class Review {
     @GeneratedValue
     private Long id;
 
-
-    private String username;
+    @ManyToOne(optional = false)
+    @JoinColumn
+    @JsonIgnore
+    private CustomUserDetails user;
 
     private Integer rating;
 
@@ -30,5 +33,8 @@ public class Review {
             throw new IllegalStateException("Rating must be between 0 and 10.");
         }
         this.rating = rating;
+    }
+    public String getAuthor() {
+        return user.getUsername();
     }
 }

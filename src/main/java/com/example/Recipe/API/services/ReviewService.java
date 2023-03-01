@@ -85,7 +85,7 @@ public class ReviewService {
     }
 
     public List<Review> getReviewByUsername(String username) throws NoSuchReviewException {
-        List<Review> reviews = reviewRepo.findByUsername(username);
+        List<Review> reviews = reviewRepo.findByUser_Username(username);
 
         if (reviews.isEmpty()) {
             throw new NoSuchReviewException("No reviews could be found for username " + username);
@@ -98,7 +98,7 @@ public class ReviewService {
         Recipe recipe = recipeService.getRecipeById(recipeId);
 
         // #7
-        if (recipeService.getRecipeById(recipeId).getUsername().equals(review.getUsername())) {
+        if (recipeService.getRecipeById(recipeId).getAuthor().equals(review.getAuthor())) {
             throw new NoSuchRecipeException("The review you are trying to post is for your own recipe! Sorry not allowed");
         } else if (review.getRating() == null) { // #8
             throw new NoSuchRecipeException("The review you are trying to post has an invalid rating, please try again!");

@@ -14,6 +14,6 @@ public interface RecipeRepo extends JpaRepository<Recipe, Long> {
 
     List<Recipe> findByDifficultyRatingIs(int rating);
 
-    List<Recipe> findByUsernameContainingIgnoreCase(String name);
+    List<Recipe> findByUser_UsernameContainingIgnoreCase(String name);
 
 }

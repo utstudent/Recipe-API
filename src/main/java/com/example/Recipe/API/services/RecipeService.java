@@ -22,6 +22,7 @@ public class RecipeService {
     @Transactional
     public Recipe createNewRecipe(Recipe recipe) throws IllegalStateException {
         recipe.validate();
+        recipe.generateLocationURI();
         return recipeRepo.save(recipe);
     }
 
@@ -66,7 +67,7 @@ public class RecipeService {
 
     // #5
     public List<Recipe> getRecipesByUsername(String username) throws NoSuchRecipeException {
-        List<Recipe> matchingRecipes = recipeRepo.findByUsernameContainingIgnoreCase(username);
+        List<Recipe> matchingRecipes = recipeRepo.findByUser_UsernameContainingIgnoreCase(username);
 
         if (matchingRecipes.isEmpty()) {
             throw new NoSuchRecipeException("No recipes could be found with that username.");

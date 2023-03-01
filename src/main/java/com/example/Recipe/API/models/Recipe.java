@@ -1,4 +1,5 @@
 package com.example.Recipe.API.models;
+import com.example.Recipe.API.models.SecurityModels.CustomUserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -25,9 +26,10 @@ public class Recipe {
     @Column(nullable = false)
     private String name;
 
-    // #4
-    @Column(nullable = false)
-    private String username;
+    @ManyToOne(optional = false)
+    @JoinColumn
+    @JsonIgnore
+    private CustomUserDetails user;
 
     @Column(nullable = false)
     private Integer minutesToMake;
@@ -80,5 +82,8 @@ public class Recipe {
         } catch (URISyntaxException e) {
             //Exception should stop here.
         }
+    }
+    public String getAuthor() {
+        return user.getUsername();
     }
 }
