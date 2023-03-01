@@ -22,11 +22,19 @@ public class Review {
     @JoinColumn
     @JsonIgnore
     private CustomUserDetails user;
-
+    @Column(nullable = false)
     private Integer rating;
 
-
     private String description;
+
+    @ManyToOne
+    @JoinColumn(
+            name = "recipeId",
+            nullable = false,
+            foreignKey = @ForeignKey
+    )
+    @JsonIgnore
+    private Recipe recipe;
 
     public void setRating(int rating) {
         if (rating <= 0 || rating > 10) {

@@ -120,12 +120,12 @@ public class ReviewService {
     }
 
     public Review updateReviewById(Review reviewToUpdate) throws NoSuchReviewException {
-        try {
-            Review review = getReviewById(reviewToUpdate.getId());
-        } catch (NoSuchReviewException e) {
-            throw new NoSuchReviewException("The review you are trying to update. Maybe you meant to create one? If not," +
-                    "please double check the ID you passed in.");
-        }
+//        try {
+//            Review review = getReviewById(reviewToUpdate.getId());
+//        } catch (NoSuchReviewException e) {
+//            throw new NoSuchReviewException("The review you are trying to update. Maybe you meant to create one? If not," +
+//                    "please double check the ID you passed in.");
+//        }
         reviewRepo.save(reviewToUpdate);
         return reviewToUpdate;
     }

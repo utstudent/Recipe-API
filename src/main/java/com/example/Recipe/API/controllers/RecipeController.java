@@ -96,6 +96,17 @@ public class RecipeController {
         }
     }
 
+//    @PatchMapping("/{id}")
+//    @PreAuthorize("hasPermission(#updatedRecipe.id, 'Recipe', 'edit')")
+//    public ResponseEntity<?> updateRecipe(@RequestBody Recipe updatedRecipe) {
+//        try {
+//            Recipe returnedUpdatedRecipe = recipeService.updateRecipe(updatedRecipe, true);
+//            return ResponseEntity.ok(returnedUpdatedRecipe);
+//        } catch (NoSuchRecipeException | IllegalStateException e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
+
     @PatchMapping("/{id}")
     @PreAuthorize("hasPermission(#updatedRecipe.id, 'Recipe', 'edit')")
     public ResponseEntity<?> updateRecipe(@RequestBody Recipe updatedRecipe) {

@@ -92,10 +92,22 @@ public class ReviewController {
         }
     }
 
+//    @PatchMapping
+//    @PreAuthorize("hasPermission(#reviewToUpdate.id, 'Review', 'edit')")
+//    public ResponseEntity<?> updateReviewById(@RequestBody Review reviewToUpdate) {
+//        try {
+//            Review review = reviewService.updateReviewById(reviewToUpdate);
+//            return ResponseEntity.ok(review);
+//        } catch (NoSuchReviewException e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
+
     @PatchMapping
     @PreAuthorize("hasPermission(#reviewToUpdate.id, 'Review', 'edit')")
-    public ResponseEntity<?> updateReviewById(@RequestBody Review reviewToUpdate) {
+    public ResponseEntity<?> updateReviewById(@RequestBody Review reviewToUpdate, Authentication authentication) {
         try {
+            reviewToUpdate.setUser((CustomUserDetails) authentication.getPrincipal());
             Review review = reviewService.updateReviewById(reviewToUpdate);
             return ResponseEntity.ok(review);
         } catch (NoSuchReviewException e) {
