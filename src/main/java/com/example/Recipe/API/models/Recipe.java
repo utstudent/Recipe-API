@@ -45,8 +45,11 @@ public class Recipe {
     @JoinColumn(name = "recipeId", nullable = false, foreignKey = @ForeignKey)
     private Collection<Step> steps = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "recipeId", nullable = false, foreignKey = @ForeignKey)
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "recipe_id", nullable = false, foreignKey = @ForeignKey)
+//    private Collection<Review> reviews;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipe")
     private Collection<Review> reviews;
 
     @Transient

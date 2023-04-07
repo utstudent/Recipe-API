@@ -26,14 +26,18 @@ public class Review {
     private Integer rating;
 
     private String description;
+// doesnt work for some reason
+//    @ManyToOne
+//    @JoinColumn(
+//            name = "recipe_id",
+//            nullable = false,
+//            foreignKey = @ForeignKey
+//    )
+//    @JsonIgnore
+//    private Recipe recipe;
 
-    @ManyToOne
-    @JoinColumn(
-            name = "recipeId",
-            nullable = false,
-            foreignKey = @ForeignKey
-    )
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
     public void setRating(int rating) {
