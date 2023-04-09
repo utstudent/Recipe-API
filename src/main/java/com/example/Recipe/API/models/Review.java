@@ -26,7 +26,7 @@ public class Review {
     private Integer rating;
 
     private String description;
-// doesnt work for some reason
+
 //    @ManyToOne
 //    @JoinColumn(
 //            name = "recipe_id",
